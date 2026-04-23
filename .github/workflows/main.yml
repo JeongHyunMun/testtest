@@ -21,10 +21,13 @@ jobs:
         run: chmod +x ./mvnw
 
       - name: Build with Maven
-        run: ./mvnw clean package -DskipTests
+        run: ./mvnw clean package spring-boot:repackage -DskipTests
 
       - name: Check target folder
         run: ls -al target
+
+      - name: Find jar
+        run: find . -name "*.jar"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
