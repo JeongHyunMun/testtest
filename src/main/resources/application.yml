@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  shutdown: graceful # 서버 종료 시 현재 처리 중인 요청을 마친 뒤 안전하게 종료
+
+spring:
+  application:
+    name: mySideProject
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.40.128:3306/ojt?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 3000
+  data:
+    redis:
+      host: 192.168.40.128
+      port: 6379
+  jpa:
+   hibernate:
+    ddl-auto: update
+   show-sql: false
+   properties:
+    hibernate:
+     format_sql: true
+
+jwt:
+  secret: Gw7i47zdir8eJKZj+rdTWTE42emdYDOd/7jmQLahScQzKn3CC3XMAvBzM8wKoqKStLOPXgAWFzmBiNwUt0OZPw==
+  access-token-validity: 3600000
+  refresh-token-validity: 2592000000

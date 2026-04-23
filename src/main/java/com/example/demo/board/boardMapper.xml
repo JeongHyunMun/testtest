@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.board.BoardMapper">
+
+	<select id="getBoardData" parameterType="String" resultType="com.example.demo.board.BoardDto">
+		SELECT 
+			b.board_no,
+			u.user_no,
+			u.user_name,
+			b.title,
+			b.content,
+			b.category,
+			b.view_count,
+			b.created_date
+		FROM BOARD b
+		JOIN USER u
+			ON b.user_no = u.user_no
+		<if test="sc.title != null and sc.title != ''">
+		WHERE b.title = #{sc.title}
+		</if>
+		<if test="sc.user_name != null and sc.user_name != ''">
+		AND b.user_name = #{sc.user_name}
+		</if>
+	</select>
+	
+	<select id="getBoardDataCount" parameterType="map" resultType="int">
+		SELECT 
+			count(1)
+		FROM BOARD b
+		JOIN USER u
+			ON b.user_no = u.user_no
+	</select>
+	
+		
+
+
+</mapper>

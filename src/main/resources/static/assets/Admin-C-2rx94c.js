@@ -1,0 +1,1 @@
+import{d as s,u as a,c as o,o as t,a as n}from"./index-DZZrl6OP.js";const r={class:"admin"},d=s({__name:"Admin",setup(i){return a(),(u,e)=>(t(),o("div",r,[...e[0]||(e[0]=[n("h1",null,"This is an about page",-1)])]))}});export{d as default};
